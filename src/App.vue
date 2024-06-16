@@ -1,6 +1,8 @@
 <template>
   <div id="game-board">
-    <Square v-for="(square, index) in 64" :squareData="square.text" :key="square.id"></Square>
+    <Square v-for="(square, squareIndex) in squares" :squareData="square.text"
+      :key="square.id" :squareIndex="squareIndex+1" :id=square.id>
+    </Square>
   </div>
 </template>
 <!--  ///////////////////////////////////////////////////// -->
@@ -12,18 +14,9 @@
   export default { name: "app", 
     components: { GameBoard, Square }, 
     data () { return {
-      squares: [
-        { id: "square-" + nanoid(), text: "X", },
-        { id: "square-" + nanoid(), text: "X", },
-        { id: "square-" + nanoid(), text: "X", },
-        { id: "square-" + nanoid(), text: "X", },
-        { id: "square-" + nanoid(), text: "X", },
-        { id: "square-" + nanoid(), text: "X", },
-        { id: "square-" + nanoid(), text: "X", },
-        { id: "square-" + nanoid(), text: "X", },
-        { id: "square-" + nanoid(), text: "X", },
-      ],
-      // game_rows: []
+      squares: Array.from({length: 64}, () => ({
+        id: "square-" + nanoid(), text: "X", 
+      })),
     }},
   }
 </script>
