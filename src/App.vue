@@ -1,30 +1,33 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div id="game-board">
+    <Square v-for="(square, index) in 64" :squareData="square.text" :key="square.id"></Square>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
+<!--  ///////////////////////////////////////////////////// -->
+<script>
+  import { nanoid } from "nanoid"; 
+  import GameBoard from "./components/GameBoard.vue";
+  import Square from "./components/Square.vue";
 
+  export default { name: "app", 
+    components: { GameBoard, Square }, 
+    data () { return {
+      squares: [
+        { id: "square-" + nanoid(), text: "X", },
+        { id: "square-" + nanoid(), text: "X", },
+        { id: "square-" + nanoid(), text: "X", },
+        { id: "square-" + nanoid(), text: "X", },
+        { id: "square-" + nanoid(), text: "X", },
+        { id: "square-" + nanoid(), text: "X", },
+        { id: "square-" + nanoid(), text: "X", },
+        { id: "square-" + nanoid(), text: "X", },
+        { id: "square-" + nanoid(), text: "X", },
+      ],
+      // game_rows: []
+    }},
+  }
+</script>
+<!--  ///////////////////////////////////////////////////// -->
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+  #game-board { text-align: center; padding-top: 20px;}
 </style>
