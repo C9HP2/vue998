@@ -7,7 +7,7 @@
     props: {
       squareData: { type: String, default: null},
       squareIndex: { type: Number, required: true }, 
-      key: { type: String, required: true, },
+      squareId: { type: String, required: true, },
     },
     computed: {
       squareStyle() {
